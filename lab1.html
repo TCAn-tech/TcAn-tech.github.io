@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+        } 
+
+        .top {
+            width: 100%;
+            height: 52px;
+            background-color: #333;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; 
+            border-radius: 10px 10px 0 0;
+        }
+
+        .top ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0 50px; 
+        }
+
+        .top li {
+            position: relative;
+        }
+
+        .top a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .top li:not(:last-child)::after {
+            content: "|";
+            color: gray;
+            position: absolute;
+            right: -12px;
+        }
+
+        .phone::before {
+            content: "📱 ";
+        } 
+
+        .top a:hover {
+            color: #5EB69C;
+        }
+
+        .header {
+            display: flex;
+            height: 88px;
+            margin-top: 22px;
+            margin-bottom: 22px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .log img {
+            height: 88px; 
+            margin-right: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px; 
+            margin-right: 60px;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 0; 
+            border-bottom: 2px solid transparent; 
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            color: #3498db;
+            border-bottom: 2px solid #3498db; 
+        }
+        .search{
+            position: relative;
+        }
+        .search input{
+            width: 200px;
+            height: 36px;
+            border: none; 
+            border-bottom: 1px solid #ddd; 
+            outline: none;
+            background: transparent; 
+            padding-left: 30px;
+        }
+        .search::before {
+            content: "🔍";
+            position: absolute;
+            transform: translateY(-50%);
+            left: 5px;
+            top: 50%;
+            color: #999; 
+            font-size: 14px;
+        }
+        .cart{
+            padding-left: 80px;
+            transform: scale(1.5);
+            position: relative;
+        }
+        .cart i{
+            font-style: normal;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: #E26237;
+            border-radius: 10px;
+            height: 11px;
+            width: 18px;
+            font-size: 8px;
+            text-align: center;
+            color: white;
+            line-height: 11px;
+        }
+        .cart a{
+            text-decoration: none;
+        }
+        .first{
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+        .first ul{
+            background-color: #626262;
+            width: 250px;
+            height: 500px;
+            list-style: none;
+        }
+        .first li{
+            width: 250px;
+            height: 50px;
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            padding: 14px 12px 14px 29px;
+            
+        }
+        .first li a{
+            color: white;
+            text-decoration: none;
+            display: block;
+            font-weight: 350;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <ul>
+            <li><a href="#">请先登录</a></li>
+            <li><a href="#">免费注册</a></li>   
+            <li><a href="#">我的订单</a></li>
+            <li><a href="#">会员中心</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li><a href="#">在线客服</a></li>
+            <li class="phone"><a href="#">手机版</a></li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <div class="log">
+            <a href="#"><img src="logo.png" alt="网站Logo"></a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">计科25专升本5班</a></li>
+                <li><a href="#">安宇翔</a></li>
+                <li><a href="#">25216950519</a></li>
+                <li><a href="#">电器</a></li>
+                <li><a href="#">家居</a></li>
+                <li><a href="#">洗护</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="搜一搜">
+
+        </div>
+        <div class="cart">
+            <a href=""><span>🛒</span>
+            <i>22</i></a>
+        </div>
+    </div>
+    <div class="first">
+        <ul>
+            <li><a href="">生鲜果蔬 &nbsp; &nbsp;水果 蔬菜</a></li>
+            <li><a href="">美食推荐 &nbsp; &nbsp;面包 干果</a></li>
+            <li><a href="">数码电子 &nbsp; &nbsp;手机 电脑</a></li>
+            <li><a href="">家庭电器 &nbsp; &nbsp;电视 冰箱</a></li>
+            <li><a href="">厨房电器 &nbsp; &nbsp;餐具厨房用品</a></li>
+            <li><a href="">居家生活 &nbsp; &nbsp;床品 四件套 被枕</a></li>
+            <li><a href="">洗护美妆 &nbsp; &nbsp;洗发 洁面 美妆</a></li>
+            <li><a href="">孕婴用品 &nbsp; &nbsp;奶粉 玩具 服装</a></li>
+            <li><a href="">服饰穿搭 &nbsp; &nbsp;女装 男装</a></li>
+            <li><a href="">日用杂货户外 &nbsp; &nbsp;图书</a></li>
+        </ul>
+    </div>
+</body>
+</html>
