@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小兔鲜儿-新鲜、惠民、快捷!</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+        } 
+
+        .top {
+            width: 100%;
+            height: 52px;
+            background-color: #333;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; 
+            border-radius: 10px 10px 0 0;
+        }
+
+        .top ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0 50px; 
+        }
+
+        .top li {
+            position: relative;
+        }
+
+        .top a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .top li:not(:last-child)::after {
+            content: "|";
+            color: gray;
+            position: absolute;
+            right: -12px;
+        }
+
+        .phone::before {
+            content: "📱 ";
+        } 
+
+        .top a:hover {
+            color: #5EB69C;
+        }
+
+        .header {
+            display: flex;
+            height: 88px;
+            margin-top: 22px;
+            margin-bottom: 22px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .log img {
+            height: 88px; 
+            margin-right: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px; 
+            margin-right: 60px;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 0; 
+            border-bottom: 2px solid transparent; 
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            color: #3498db;
+            border-bottom: 2px solid #3498db; 
+        }
+        .search{
+            position: relative;
+        }
+        .search input{
+            width: 200px;
+            height: 36px;
+            border: none; 
+            border-bottom: 1px solid #ddd; 
+            outline: none;
+            background: transparent; 
+            padding-left: 30px;
+        }
+        .search::before {
+            content: "🔍";
+            position: absolute;
+            transform: translateY(-50%);
+            left: 5px;
+            top: 50%;
+            color: #999; 
+            font-size: 14px;
+        }
+        .cart{
+            padding-left: 80px;
+            transform: scale(1.5);
+            position: relative;
+        }
+        .cart i{
+            font-style: normal;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: #E26237;
+            border-radius: 10px;
+            height: 11px;
+            width: 18px;
+            font-size: 8px;
+            text-align: center;
+            color: white;
+            line-height: 11px;
+        }
+        .cart a{
+            text-decoration: none;
+        }
+        .first{
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            background-color: #F5F5F5;
+        }
+        .first ul{
+            background-color: #626262;
+            width: 250px;
+            height: 500px;
+            list-style: none;
+        }
+        .first li{
+            width: 250px;
+            height: 50px;
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: center; /* 垂直居中 */
+            padding: 14px 12px 14px 29px;
+            
+        }
+        .first li a{
+            color: white;
+            text-decoration: none;
+            display: block;
+            font-weight: 350;
+            font-size: 15px;
+            gap: 10px;
+        }
+         .first ul li a::after{
+            content: ">";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+         }
+        .first .pic{
+            position: relative;
+        }
+        .point{
+            position: absolute;
+            display: flex;
+            bottom: 10px; /* 距离图片底部 */
+            right: 5px; /* 距离图片右侧 */
+
+        }
+        .point ol{
+            list-style: none;
+            display: flex;
+        }
+        .point li{
+            padding: 0px;
+            width: 27px;
+        }
+        .point a {
+            display: flex; 
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 15px;
+            height: 15px;
+        }
+        .point a.active {
+            transform: scale(1.5); /* 激活时放大效果 */
+        }
+        .point i {
+            display: block;
+            background-color: white;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            transform: scale(0.6);
+        }
+        .second{
+            padding: 20px 135px;
+        }
+        .second .title{
+            display: flex;
+            align-items:end;
+            gap: 30px;
+            position: relative;
+
+        }
+        .second .title h3 {
+        font-size: 30px; /* 调整标题大小 */
+        font-weight: 400;
+        }
+        .second .title p{
+            color: rgba(0, 0, 0, 0.6);
+        }
+        .second .title a{
+            position: absolute;
+            right: 10px;
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.5);
+        }
+        .second .title a::after{
+            content: ">";
+            padding-left: 15px;
+
+        }
+        .second .pic{
+            padding: 30px 0;
+        }
+         .second .pic ul{
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+        .second .pic a{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            font-weight: 350;
+        }
+        .second .pic p{
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            color: #AE3C28;
+            font-size: 25px;
+            font-weight: 400;
+
+        }
+        .second .price{
+        background-color: #EEF9F4;
+        }
+        .third{
+            padding: 20px 135px;
+            background-color: #F1F1F1;
+        }
+        .third .title{
+            display: flex;
+            align-items:end;
+            gap: 30px;
+            position: relative;
+
+        }
+        .third .title h3 {
+        font-size: 30px; /* 调整标题大小 */
+        font-weight: 400;
+        }
+        .third .title p{
+            color: rgba(0, 0, 0, 0.6);
+        }
+        .third .title button.left{
+            position: absolute;
+            bottom: 10px;
+            right: 50px;
+            width: 20px; 
+            height: 20px;
+            background-color: #E4E4E4;
+            border: none
+        }
+         .third .title button.right{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 20px; 
+            height: 20px;
+            background-color: #E4E4E4;
+            border: none
+        }
+        .third button.left::before {
+            content: "<";
+            font-size: 15px;
+            color: white;
+            
+        }
+        .third button.right::after {
+            content: ">";
+            font-size: 15px;
+            color: white;
+            
+        }
+        .third .title button:hover{
+            background-color: #5EB69C;
+        }
+        .third .pic{
+            padding: 30px 0;
+        }
+        .third .pic ul{
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+        .fourth{
+            padding: 50px 135px 20px 135px;
+        }
+        .fourth .title{
+            display: flex;
+            align-items:end;
+            gap: 30px;
+            position: relative;
+            padding-bottom: 45px;
+        }
+        .fourth .title h3{
+            font-size: 30px; /* 调整标题大小 */
+            font-weight: 400;
+        }
+        .fourth .title ul{
+            display: flex;
+            padding-left: 600px;
+            list-style: none;
+            gap: 5px;
+        }
+        .fourth .title ul a{
+            color: rgba(0, 0, 0, 0.7);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 22px;
+        }
+        .fourth .title ul a:hover{
+            background-color: #5EB69C;
+            
+        }
+        .fourth .title a{
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.5);
+        }
+        .fourth .title .checkall a::after{
+            content: ">";
+            padding-left: 15px;
+
+        }
+        .fourth .pic{
+            width: auto;
+            height: 610px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .fourth .left_pic{
+            padding: 30px 0;
+            width: 280px;
+        }
+        .fourth .right_pic{
+            flex: 1;
+        }
+        .fourth .right_pic ul{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .fourth .right_pic li {
+            width: calc((100% - 20px*3) / 4); /* 40px 是 gap 的值，根据实际调整 */
+        }
+        .fourth .right_pic a{
+            display: flex;
+            width: 200px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: 350;
+            padding: 10px 0;
+        }
+        .fourth .right_pic p{
+            color: #AF2F22;
+            font-size: 20px;
+        }
+        .fifth{
+            padding: 20px 135px;
+            padding-top: 50px;
+        }
+        .fifth .title{
+            display: flex;
+            align-items:end;
+            gap: 30px;
+            position: relative;
+
+        }
+        .fifth .title h3 {
+        font-size: 30px; /* 调整标题大小 */
+        font-weight: 400;
+        }
+        .fifth .title a{
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            position: absolute;
+            right: 10px;
+        }
+        .fifth .title a::after{
+            content: ">";
+            padding-left: 15px;
+
+        }
+        .fifth .pic{
+            padding: 30px 0;
+        }
+        .fifth .pic ul{
+            list-style: none;
+            display: flex;
+            color: #969696;
+        }
+        .fifth .pic .and{
+            align-items: center; /* 垂直居中对齐 */
+            gap: 25px; /* .heart 和 .eye 之间的间距 */
+            padding: 0 10px;
+            display: flex;
+
+        }
+        .fifth .pic .and .remark {
+            margin-left: auto; /* 自动占据左侧剩余空间，将自身推到右侧 */
+        }
+        .fifth .pic .and .heart::before {
+            content: "♡"; 
+            margin-right: 5px;
+        }
+        .fifth .pic .and .eye::before {
+            content: "👁";
+            margin-right: 5px;
+        }
+        .fifth .pic .and .remark::before {
+            content: "💬";
+            margin-right: 5px;
+        }
+        .last{
+            padding: 20px 135px;
+            background-color: #F1F1F1;
+        }
+        .last .n1{
+            padding: 50px 0;
+        }
+        .last .n1 ul{
+            display: flex;
+            gap: 70px;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+        }
+        .last .n1 ul a{
+            text-decoration: none;
+            color: black;
+        }
+        .last .n1 ul a h4{
+            font-weight: 350;
+            font-size: 25px;
+        }
+        .last .n1 ul li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .last .n1 ul li img{
+            width: 110px;    /* 统一宽度 */
+            height: 110px;   /* 统一高度 */
+            object-fit: contain; /* 保持图标比例，防止变形 */
+        }
+        .last .n2{
+            padding: 50px 0;
+            display: flex;
+        }
+        .last .n2 .n2_left{
+            display: flex;
+            gap: 70px;
+        }
+        .last .n2 .n2_left ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .last .n2 .n2_left a{
+            display: flex;
+            text-decoration: none;
+            color: #969696;
+            font-size: 17px;
+        }
+        .last .n2 .n2_left .li1{
+            font-size: 20px;
+            color: #333333;
+            padding-bottom: 10px;
+        }
+        .n2_right{
+            padding-left: 80px;
+        }
+        .n2_right ul{
+            list-style: none;
+            display: flex;
+            gap: 50px;
+        }
+        .n2_right p{
+            display: flex;
+            color: #969696;
+            justify-content: center;
+            align-items: center;
+        }
+        .n3{
+            padding: 50px 0;
+        }
+        .n3 ul{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .n3 li::after{
+            content: "|";
+            color: #969696;
+        }
+        .n3 a{
+            text-decoration: none;
+            color: #969696;
+        }
+        .n3 p{
+            display: flex;
+            color: #969696;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <ul>
+            <li><a href="#">请先登录</a></li>
+            <li><a href="#">免费注册</a></li>   
+            <li><a href="#">我的订单</a></li>
+            <li><a href="#">会员中心</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li><a href="#">在线客服</a></li>
+            <li class="phone"><a href="#">手机版</a></li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <div class="log">
+            <a href="#"><img src="logo.png" alt="网站Logo"></a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">计科25专升本5班</a></li>
+                <li><a href="#">安宇翔</a></li>
+                <li><a href="#">25216950519</a></li>
+                <li><a href="#">电器</a></li>
+                <li><a href="#">家居</a></li>
+                <li><a href="#">洗护</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="搜一搜">
+
+        </div>
+        <div class="cart">
+            <a href=""><span>🛒</span>
+            <i>22</i></a>
+        </div>
+    </div>
+    <div class="first">
+        <ul>
+            <li><a href="#">生鲜果蔬 &nbsp; &nbsp;水果 蔬菜</a></li>
+            <li><a href="#">美食推荐 &nbsp; &nbsp;面包 干果</a></li>
+            <li><a href="#">数码电子 &nbsp; &nbsp;手机 电脑</a></li>
+            <li><a href="#">家庭电器 &nbsp; &nbsp;电视 冰箱</a></li>
+            <li><a href="#">厨房电器 &nbsp; &nbsp;餐具厨房用品</a></li>
+            <li><a href="#">居家生活 &nbsp; &nbsp;床品 四件套 被枕</a></li>
+            <li><a href="#">洗护美妆 &nbsp; &nbsp;洗发 洁面 美妆</a></li>
+            <li><a href="#">孕婴用品 &nbsp; &nbsp;奶粉 玩具 服装</a></li>
+            <li><a href="#">服饰穿搭 &nbsp; &nbsp;女装 男装</a></li>
+            <li><a href="#">日用杂货 &nbsp; &nbsp;户外 图书</a></li>
+        </ul>
+        <div class="pic">
+            <a href=""><img src="banner1.png" alt=""></a>
+            <div class="point">
+            <ol>
+                <li><a href="#" class="active"><i></i></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ol>
+            </div>   
+        </div>
+
+    </div>
+    <div class="second">
+        <div class="title">
+            <h3>新鲜好物</h3>
+            <p>新鲜出炉 品质靠谱</p>
+            <a href="#">查看全部</a>
+        </div>
+        <div class="pic">
+            <ul>
+            <li>
+                <img src="goods1.png" alt="">
+                <div class="price">
+                <p><a href="#">KN95级莫兰迪色防护口罩</a></p>
+                <p>￥79</p>
+        </div>
+            </li>
+            <li>
+                <img src="goods2.png" alt="">
+                <div class="price">
+                <p><a href="#">紫檀外独板三层普洱茶盒</a></p>
+                <p>￥566</p>
+                </div>
+            </li>
+            <li>
+                <img src="goods3.png" alt="">
+                <div class="price">
+                <p><a href="#">法拉蒙高颜值记事本可定制</a></p>
+                <p>￥58</p>
+                </div>
+            </li>
+            <li>
+                <img src="goods4.png" alt="">
+                <div class="price">
+                <p><a href="#">科技布布艺沙发</a></p>
+                <p>￥3579</p>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <div class="third">
+        <div class="title">
+            <h3>热门品牌</h3>
+            <p>国际经典 品质认证</p>
+            <button class="left"></button>
+            <button class="right"></button>
+        </div>
+        <div class="pic">
+            <ul>
+                <li><img src="hot1.png" alt=""></li>
+                <li><img src="hot2.png" alt=""></li>
+                <li><img src="hot3.png" alt=""></li>
+                <li><img src="hot4.png" alt=""></li>
+                <li><img src="hot5.png" alt=""></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="fourth">
+        <div class="title">
+            <h3>生鲜</h3>
+            <ul>
+                <li><a href="#">热门</a></li>
+                <li><a href="#">蔬菜</a></li>
+                <li><a href="#">肉禽蛋</a></li>
+                <li><a href="#">水果</a></li>
+                <li><a href="#">海鲜</a></li>
+                <li><a href="#">饮料</a></li>
+                <li><a href="#">零食</a></li>
+            </ul>
+            <div class="checkall"><a href="">查看全部</a></div>
+        </div>
+        <div class="pic">
+        <div class="left_pic">
+            <img src="fresh_left.png" alt="">
+        </div>
+        <div class="right_pic">
+                <ul>
+                    <li>
+                        <img src="fresh1.png" alt="">
+                        <div price>
+                            <a href="#">双味千层，手抓饼烤肉组合240g/袋 4片装<br>加热即食</a>
+                            <p><small>￥</small>&nbsp;89.99</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh2.png" alt="">
+                        <div price>
+                            <a href="#">云南甘蔗慢熬红糖馒头220g/袋 5个装<br>加热即食</a>
+                            <p><small>￥</small>&nbsp;9.99</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh3.png" alt="">
+                        <div price>
+                            <a href="#">日式风味小圆饼圆形【海盐味】<br>糖果零食</a>
+                            <p><small>￥</small>&nbsp;588.00</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh4.png" alt="">
+                        <div price>
+                            <a href="#">全麦奶油浓香小面包,50g*12袋<br>美味西点</a>
+                            <p><small>￥</small>&nbsp;69.00</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh5.png" alt="">
+                        <div price>
+                            <a href="#">秘制外皮五福摩提大福点心150g/盒<br>美味西点</a>
+                            <p><small>￥</small>&nbsp;39.99</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh6.png" alt="">
+                        <div price>
+                            <a href="#">水果面膜韩国蜂蜜柚子茶560g/瓶<br>冲调饮品</a>
+                            <p><small>￥</small>&nbsp;89.99</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh7.png" alt="">
+                        <div price>
+                            <a href="#">浓情比利时巧克力礼盒装205克/盒<br>糖果零食</a>
+                            <p><small>￥</small>&nbsp;120.00</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="fresh8.png" alt="">
+                        <div price>
+                            <a href="#">抹茶奶油小蛋糕礼盒装220克/盒<br>美味西点</a>
+                            <p><small>￥</small>&nbsp;60.00</p>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+        </div>
+    </div>
+    <div class="fifth">
+        <div class="title">
+            <h3>最新专题</h3>
+            <a href="#">查看全部</a>
+        </div>
+    <div class="pic">
+        <ul>
+            <li>
+                <img src="topic1.png" alt="">
+                <div class="and">
+                <p class="heart">1220</p>
+                <p class="eye">1800</p>
+                <p class="remark">246</p>
+                </div>
+            </li>
+            <li>
+                <img src="topic2.png" alt="">
+                <div class="and">
+                <p class="heart">1220</p>
+                <p class="eye">1800</p>
+                <p class="remark">246</p>
+                </div>
+            </li>
+            <li>
+                <img src="topic3.png" alt="">
+                <div class="and">
+                <p class="heart">1220</p>
+                <p class="eye">1800</p>
+                <p class="remark">246</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div class="last">
+        <div class="n1">
+            <ul>
+                <li>
+                    <img src="last1.png" alt="">
+                    <a href="#"><h4>价格亲民</h4></a>
+                </li>
+                <li>
+                    <img src="last2.png" alt="">
+                    <a href="#"><h4>物流快捷</h4></a>
+                </li>
+                <li>
+                    <img src="last3.png" alt="">
+                    <a href="#"><h4>品质新鲜</h4></a>
+                </li>
+                <li>
+                    <img src="last4.png" alt="">
+                    <a href="#"><h4>售后无忧</h4></a>
+                </li>
+            </ul>
+        </div>
+        <hr color="#E8E8E8">
+        <div class="n2">
+            <div class="n2_left">
+            <ul class="1">
+                <li class="li1"><p>购物指南</p></li>
+                <li><a href="#">购物流程</a></li>
+                <li><a href="#">支付方式</a></li>
+                <li><a href="#">售后规则</a></li>
+            </ul>
+            <ul class="2">
+                <li class="li1"><p>配送方式</p></li>
+                <li><a href="#">配送运费</a></li>
+                <li><a href="#">配送范围</a></li>
+                <li><a href="#">配送时间</a></li>
+            </ul>
+            <ul class="3">
+                <li class="li1"><p>关于我们</p></li>
+                <li><a href="#">平台规则</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="#">问题反馈</a></li>
+            </ul>
+            <ul class="4">
+                <li class="li1"><p>售后服务</p></li>
+                <li><a href="#">售后政策</a></li>
+                <li><a href="#">退款说明</a></li>
+                <li><a href="#">取消订单</a></li>
+            </ul>
+            <ul class="5">
+                <li class="li1"><p>服务热线</p></li>
+                <li><a href="#" class="call">在线客服 </a></li>
+                <li><a href="#">客服电话 400-0000-000</a></li>
+                <li><a href="#">工作时间 周一至周日 8:00-18:00</a></li>
+            </ul>
+            </div>
+        <div class="n2_right">
+            <ul>
+                <li>
+                    <img src="wechat.png" alt="">
+                    <p>微信公众号</p>
+                </li>
+                <li>
+                    <img src="app.png" alt="">
+                    <p>APP下载二维码</p>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div class="n3">
+            <ul>
+                <li><a href="#">&nbsp;&nbsp;关于我们&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;帮助中心&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;帮助中心&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;配送与验收&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;配送与验收&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;搜索推荐&nbsp;&nbsp;</a></li>
+            </ul>
+            <p>@CopyRight © 小兔鲜</p>
+        </div>
+    </div>
+</body>
+</html>
